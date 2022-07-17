@@ -3,7 +3,7 @@ name: test test
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
 env:
   TEST_TAG: 1g0rbm/devops
