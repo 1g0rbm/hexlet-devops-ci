@@ -37,3 +37,11 @@ jobs:
           context: .
           push: true
           tags: 1g0rbm/devops:latest
+
+      - name: Build and push caddy
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: services/caddy/Dockerfile
+          push: true
+          tags: 1g0rbm/devops-caddy:latest
