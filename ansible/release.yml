@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - community.docker.docker_container:
+        name: app
+        image: "1g0rbm/devops:{{ version }}"
+        restart_policy: always
+        state: started
+        ports:
+          - 8080:8080
+        env: # Настраиваем
+          NODE_ENV: production

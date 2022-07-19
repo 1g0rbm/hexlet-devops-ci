@@ -1,0 +1,11 @@
+- hosts: all
+
+  tasks:
+    - apt:
+        name: python3-pip
+        update_cache: true
+        cache_valid_time: 604800 # 1 week
+      become: true
+
+    - pip:
+        name: docker
