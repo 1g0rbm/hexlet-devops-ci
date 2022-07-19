@@ -16,8 +16,9 @@ localhost, 62.84.117.86, devops.test {
 }
 
 handle_errors {
-	expression {http.error.status_code} == '502' {
-		rewrite * /502.html
-			file_server
+	@502 {
+		expression {http.error.status_code} == 502
 	}
+	rewrite @502 /502.html
+	file_server
 }
