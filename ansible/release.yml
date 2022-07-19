@@ -1,11 +1,26 @@
 - hosts: all
   tasks:
+
+    - community.docker.docker_network:
+        name: devops-example
+
     - community.docker.docker_container:
         name: app
         image: "1g0rbm/devops:{{ version }}"
         restart_policy: always
         state: started
-        ports:
-          - 8080:8080
-        env: # Настраиваем
+        networks:
+          - name: devops-example
+        env:
           NODE_ENV: production
+
+    - community.docker.docker_container:
+        name: caddy
+        image: "1g0rbm/devops-caddy:{{ version }}"
+        restart_policy: always
+        state: started
+        networks:
+          - name: devops-example
+        ports:
+          - 80:80
+          - 443:443

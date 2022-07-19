@@ -1,4 +1,4 @@
-localhost {
+localhost, devops.test {
 	tls internal
 
 	handle /images/* {
@@ -12,5 +12,12 @@ localhost {
 
 	log {
 		format json
+	}
+}
+
+handle_errors {
+	expression {http.error.status_code} == '502' {
+		rewrite * /502.html
+			file_server
 	}
 }
