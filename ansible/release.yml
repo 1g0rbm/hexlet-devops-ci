@@ -13,6 +13,11 @@
           - name: devops-example
         env:
           NODE_ENV: production
+          DATABASE_NAME: "{{ db_name }}"
+          DATABASE_USERNAME: "{{ db_user }}"
+          DATABASE_PASSWORD: "{{ db_password }}"
+          DATABASE_PORT: "{{ db_port }}"
+          DATABASE_HOST: "{{ db_host }}"
 
     - community.docker.docker_container:
         name: caddy
