@@ -1,5 +1,5 @@
 db_host: rc1b-2wiv184j9orjqvvx.mdb.yandexcloud.net
-db_port: 6432
+db_port: "6432"
 db_name: hexlet-devops
 db_user: hexlet-devops
 db_password: hexlet-devops

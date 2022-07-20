@@ -23,3 +23,21 @@
         path: ~/.postgresql/root.crt
         state: touch
         mode: 0660
+
+  roles:
+    - { role: datadog.datadog, become: yes }
+  vars:
+    datadog_api_key: "be3c00ab60d231bcc3a51a95e9ec4990"
+    datadog_site: "datadoghq.com"
+    datadog_checks:
+      process:
+        init_config:
+        instances:
+          - name: ssh
+            search_string: ['ssh', 'sshd']
+          - name: syslog
+            search_string: ['rsyslog']
+            cpu_check_interval: 0.2
+            exact_match: true
+            ignore_denied_access: true
+          - name: Check main page
